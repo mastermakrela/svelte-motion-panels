@@ -1,0 +1,189 @@
+@import 'tailwindcss';
+
+/* The theme script in app.html puts `.dark` on <html> before first paint, from
+   the stored choice or else prefers-color-scheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+	color-scheme: light;
+
+	--background: oklch(1 0 0);
+	--foreground: oklch(0.145 0 0);
+	--card: oklch(1 0 0);
+	--card-foreground: oklch(0.145 0 0);
+	--primary: oklch(0.205 0 0);
+	--primary-foreground: oklch(0.985 0 0);
+	--muted: oklch(0.97 0 0);
+	--muted-foreground: oklch(0.556 0 0);
+	--border: oklch(0.922 0 0);
+	--input: oklch(0.922 0 0);
+	--ring: var(--accent);
+
+	/* Svelte orange, used sparingly: wordmark, links, the current nav item. */
+	--accent: oklch(0.58 0.2 36);
+	--accent-soft: oklch(0.58 0.2 36 / 8%);
+
+	--well: oklch(0.973 0 0);
+	--code: oklch(0.985 0 0);
+}
+
+.dark {
+	color-scheme: dark;
+
+	--background: oklch(0.145 0 0);
+	--foreground: oklch(0.985 0 0);
+	--card: oklch(0.205 0 0);
+	--card-foreground: oklch(0.985 0 0);
+	--primary: oklch(0.922 0 0);
+	--primary-foreground: oklch(0.205 0 0);
+	--muted: oklch(0.269 0 0);
+	--muted-foreground: oklch(0.708 0 0);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: var(--accent);
+
+	--accent: oklch(0.66 0.22 36);
+	--accent-soft: oklch(0.66 0.22 36 / 13%);
+
+	--well: oklch(0.115 0 0);
+	--code: oklch(0.175 0 0);
+}
+
+@theme inline {
+	--font-sans:
+		'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-accent: var(--accent);
+	--color-accent-soft: var(--accent-soft);
+	--color-well: var(--well);
+	--color-code: var(--code);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+
+	html {
+		@apply bg-background text-foreground font-sans;
+		scroll-behavior: smooth;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+
+	body {
+		font-size: 15px;
+		line-height: 1.65;
+		-webkit-font-smoothing: antialiased;
+	}
+}
+
+@utility kicker {
+	font-family: var(--font-mono);
+	font-size: 0.6875rem;
+	font-weight: 500;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+@utility no-scrollbar {
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+/* A sized panel with no Separator of its own grows an invisible edge grip. It
+   is still a tab stop, so it needs a visible focus ring. */
+[data-motion-panels-edge]:focus-visible {
+	outline: 2px solid var(--ring);
+	outline-offset: -2px;
+}
+
+/* Tones for the tiny highlighter in routes/(site)/highlight.ts. */
+.tok-keyword {
+	color: var(--foreground);
+	font-weight: 500;
+}
+.tok-tag {
+	color: color-mix(in oklab, var(--foreground) 80%, transparent);
+}
+.tok-attr {
+	color: color-mix(in oklab, var(--muted-foreground) 95%, transparent);
+}
+.tok-string {
+	color: color-mix(in oklab, var(--foreground) 62%, transparent);
+}
+.tok-number {
+	color: color-mix(in oklab, var(--foreground) 70%, transparent);
+}
+.tok-comment {
+	color: color-mix(in oklab, var(--muted-foreground) 70%, transparent);
+	font-style: italic;
+}
+.tok-rune {
+	color: var(--foreground);
+	text-decoration: underline;
+	text-decoration-color: color-mix(in oklab, var(--accent) 70%, transparent);
+	text-underline-offset: 3px;
+}
+.tok-punct {
+	color: color-mix(in oklab, var(--muted-foreground) 70%, transparent);
+}
+.tok-plain {
+	color: color-mix(in oklab, var(--foreground) 85%, transparent);
+}
+
+/* Hero loops, still under prefers-reduced-motion. */
+@keyframes blink {
+	0%,
+	50% {
+		opacity: 1;
+	}
+	50.01%,
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes breathe {
+	0%,
+	100% {
+		opacity: 0.25;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+@keyframes dwell {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.motion-loop {
+		animation: none !important;
+	}
+}
