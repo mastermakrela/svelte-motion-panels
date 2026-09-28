@@ -25,7 +25,7 @@ export const GROUPS = [
 	},
 	{
 		items: [
-			{ id: 'core', title: 'Core, without Svelte' },
+			{ id: 'under-the-hood', title: 'Under the hood' },
 			{ id: 'styling', title: 'Styling' },
 			{ id: 'api', title: 'API' }
 		],
