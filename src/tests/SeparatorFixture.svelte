@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Group, Panel, Separator } from '$lib/index.js';
+	import { Group, Panel, Separator } from '#lib/index.js';
 
 	let { separated = true }: { separated?: boolean } = $props();
 </script>

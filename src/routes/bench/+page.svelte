@@ -5,10 +5,10 @@ experimental native runes engine ($lib/native). See BENCHMARK.md.
 <script lang="ts">
 	import { flushSync, onMount, tick } from 'svelte';
 
-	import { Group, Panel, Separator } from '$lib/index.js';
-	import NativeGroup from '$lib/native/NativeGroup.svelte';
-	import NativePanel from '$lib/native/NativePanel.svelte';
-	import NativeSeparator from '$lib/native/NativeSeparator.svelte';
+	import { Group, Panel, Separator } from '#lib/index.js';
+	import NativeGroup from '#lib/native/NativeGroup.svelte';
+	import NativePanel from '#lib/native/NativePanel.svelte';
+	import NativeSeparator from '#lib/native/NativeSeparator.svelte';
 
 	type Impl = 'wrap' | 'native';
 	type Metrics = Record<string, number>;

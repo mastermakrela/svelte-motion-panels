@@ -1,7 +1,7 @@
 // Type-level checks, run by `bun run check` (svelte-check), not by vitest.
 import type { ComponentProps } from 'svelte';
 
-import type { Panel } from '$lib/index.js';
+import type { Panel } from '#lib/index.js';
 
 type Props = ComponentProps<typeof Panel<number>>;
 

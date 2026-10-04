@@ -59,6 +59,6 @@ export const highlight = (code: string, lang: Lang): Token[] => {
 /** A demo's own file as a reader would write it: imports from the package. */
 export const source = (raw: string) =>
 	raw
-		.replaceAll("'$lib/index.js'", "'svelte-motion-panels'")
+		.replaceAll("'#lib/index.js'", "'svelte-motion-panels'")
 		.replaceAll("'./shared/index.js'", "'./shared'")
 		.trim();

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Group, Panel, Separator } from '$lib/index.js';
+	import { Group, Panel, Separator } from '#lib/index.js';
 	import { MediaQuery } from 'svelte/reactivity';
 
 	import { FOLDS, FOLD_NAMES, fold, timingOf, type Fold } from './shared/folds.js';

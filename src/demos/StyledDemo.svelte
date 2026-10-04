@@ -3,7 +3,7 @@ A styled separator: a hairline on the seam and a small grip box in the middle,
 both drawn with pseudo-elements on the Separator itself.
 -->
 <script lang="ts">
-	import { Group, Panel, Separator } from '$lib/index.js';
+	import { Group, Panel, Separator } from '#lib/index.js';
 	import { MediaQuery } from 'svelte/reactivity';
 
 	import { COMPACT, Card, Demo, Editor, FILES, Rows, px } from './shared/index.js';

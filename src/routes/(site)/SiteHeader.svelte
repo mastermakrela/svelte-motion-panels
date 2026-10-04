@@ -11,7 +11,7 @@
 <header class="sticky top-0 z-50 border-b bg-background/85 backdrop-blur-md">
 	<div class="mx-auto flex h-14 w-full max-w-[1220px] items-center gap-8 px-5 min-[900px]:px-8">
 		<a
-			href={resolve('/')}
+			href={resolve('')}
 			class="flex items-center gap-2.5 text-[15px] font-medium tracking-[-0.01em] text-foreground no-underline"
 		>
 			<svg aria-hidden="true" fill="none" height="14" viewBox="0 0 20 14" width="20">
@@ -25,7 +25,7 @@
 		<nav aria-label="Site" class="ml-auto hidden items-center gap-7 min-[760px]:flex">
 			<a class={LINK} href="#install">Docs</a>
 			<a class={LINK} href="#api">API</a>
-			<a class={LINK} href={resolve('/bench')} data-sveltekit-reload>Benchmark</a>
+			<a class={LINK} href={resolve('bench')} data-sveltekit-reload>Benchmark</a>
 			<a
 				class={LINK}
 				href="https://www.npmjs.com/package/svelte-motion-panels"

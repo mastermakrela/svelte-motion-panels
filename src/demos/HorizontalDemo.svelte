@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Group, Panel } from '$lib/index.js';
+	import { Group, Panel } from '#lib/index.js';
 	import { MediaQuery } from 'svelte/reactivity';
 
 	import { COMPACT, Card, Demo, Editor, FILES, PANE, Rows, px } from './shared/index.js';

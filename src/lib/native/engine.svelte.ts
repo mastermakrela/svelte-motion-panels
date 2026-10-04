@@ -1,5 +1,5 @@
 /**
- * EXPERIMENTAL, BENCHMARK-ONLY — not exported from `$lib/index.ts`.
+ * EXPERIMENTAL, BENCHMARK-ONLY — not exported from `#lib/index.ts`.
  *
  * A minimal "native Svelte 5 runes" panel engine, written only to compare
  * against the shipped wrapper around `motion-panels` (see BENCHMARK.md). It
