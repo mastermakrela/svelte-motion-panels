@@ -14,7 +14,7 @@
 		class="mx-auto flex h-14 w-full max-w-[1220px] items-center justify-between gap-8 px-5 min-[900px]:px-8"
 	>
 		<a
-			href={resolve('/')}
+			href={resolve('')}
 			data-sveltekit-reload
 			class="flex items-center gap-2.5 text-[15px] font-medium tracking-[-0.01em] text-foreground no-underline"
 		>

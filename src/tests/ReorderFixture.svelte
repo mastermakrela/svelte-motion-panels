@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Group, Handle, Panel, Separator } from '$lib/index.js';
+	import { Group, Handle, Panel, Separator } from '#lib/index.js';
 
 	let { order = $bindable(['files', 'outline']) }: { order?: string[] } = $props();
 

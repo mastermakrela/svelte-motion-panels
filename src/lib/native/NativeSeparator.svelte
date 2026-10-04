@@ -1,6 +1,6 @@
 <!--
 @component
-EXPERIMENTAL, BENCHMARK-ONLY — not exported from `$lib/index.ts`.
+EXPERIMENTAL, BENCHMARK-ONLY — not exported from `#lib/index.ts`.
 The grip between a NativePanel and the fill: drag it, or focus it and use the
 arrow keys, Home / End, and Enter to toggle collapse.
 -->

@@ -1,6 +1,6 @@
 <!--
 @component
-EXPERIMENTAL, BENCHMARK-ONLY — not exported from `$lib/index.ts`.
+EXPERIMENTAL, BENCHMARK-ONLY — not exported from `#lib/index.ts`.
 With a `size`, a sized panel (size and collapsed bindable); without, the fill.
 Sizes reach the DOM through `style:` from Tween state; see engine.svelte.ts.
 -->

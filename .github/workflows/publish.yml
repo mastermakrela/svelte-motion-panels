@@ -14,6 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      # npm >= 11.5 (node 24) is required for OIDC trusted publishing,
+      # and SvelteKit 3 needs Node >= 22.17 for lint/check/test.
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          registry-url: 'https://registry.npmjs.org'
+
       - uses: oven-sh/setup-bun@v2
 
       - run: bun install --frozen-lockfile
@@ -31,12 +38,6 @@ jobs:
       - run: bun run check
 
       - run: bun run test
-
-      # npm >= 11.5 (node 24) is required for OIDC trusted publishing
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 24
-          registry-url: 'https://registry.npmjs.org'
 
       # prepack (svelte-kit sync + svelte-package + publint) builds dist/.
       # Auth comes from the npm trusted publisher for this repo (no NPM_TOKEN).

@@ -366,7 +366,7 @@ The library is `src/lib/`; the demo site is `src/routes/` plus `src/demos/`. The
 bun run build && bun run preview
 ```
 
-`.github/workflows/pages.yml` runs check, test and build on every push to `main` and deploys the site to GitHub Pages. A fork hosting the site under a sub-path (say `https://<user>.github.io/<repo>/`) can set `BASE_PATH=/<repo>` for both build and preview; `svelte.config.js` reads it as `paths.base`.
+`.github/workflows/pages.yml` runs check, test and build on every push to `main` and deploys the site to GitHub Pages. A fork hosting the site under a sub-path (say `https://<user>.github.io/<repo>/`) can set `BASE_PATH=/<repo>` for both build and preview; `vite.config.ts` reads it as `paths.base`.
 
 ### Releasing
 

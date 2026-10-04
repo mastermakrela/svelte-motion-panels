@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Orientation } from '$lib/index.js';
-	import { Group, Panel, Separator } from '$lib/index.js';
+	import type { Orientation } from '#lib/index.js';
+	import { Group, Panel, Separator } from '#lib/index.js';
 
 	let { size = 240, orientation = 'horizontal' }: { size?: number; orientation?: Orientation } =
 		$props();

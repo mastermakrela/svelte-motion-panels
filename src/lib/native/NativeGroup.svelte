@@ -1,6 +1,6 @@
 <!--
 @component
-EXPERIMENTAL, BENCHMARK-ONLY — not exported from `$lib/index.ts`.
+EXPERIMENTAL, BENCHMARK-ONLY — not exported from `#lib/index.ts`.
 A row or column for NativePanel / NativeSeparator; see engine.svelte.ts.
 -->
 <script lang="ts">

@@ -5,7 +5,7 @@ fold or view pick holds the reel; hovering pauses it; prefers-reduced-motion
 keeps it still.
 -->
 <script lang="ts">
-	import { Group, Panel, Separator } from '$lib/index.js';
+	import { Group, Panel, Separator } from '#lib/index.js';
 	import { animate } from 'motion';
 	import type { Attachment } from 'svelte/attachments';
 	import { fade } from 'svelte/transition';

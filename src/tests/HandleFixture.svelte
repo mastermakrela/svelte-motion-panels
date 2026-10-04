@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Group, Handle, Panel } from '$lib/index.js';
+	import { Group, Handle, Panel } from '#lib/index.js';
 
 	let {
 		onOrderChange,

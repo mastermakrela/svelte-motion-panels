@@ -4,7 +4,7 @@ A hero card: mono header with a badge and a reorder grip, and a body that
 fades out at the bottom (and at the right, with `bleed`).
 -->
 <script lang="ts">
-	import { Handle } from '$lib/index.js';
+	import { Handle } from '#lib/index.js';
 	import type { Snippet } from 'svelte';
 
 	let {

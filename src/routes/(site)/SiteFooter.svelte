@@ -26,7 +26,7 @@
 		<div class="flex flex-wrap items-center gap-x-6 gap-y-2">
 			<a
 				class="kicker no-underline transition-colors hover:text-foreground"
-				href={resolve('/bench')}
+				href={resolve('bench')}
 				data-sveltekit-reload>Benchmark</a
 			>
 			<a

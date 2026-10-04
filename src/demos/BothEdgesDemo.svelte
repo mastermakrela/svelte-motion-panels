@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Group, Panel } from '$lib/index.js';
+	import { Group, Panel } from '#lib/index.js';
 
 	import { Card, Demo, Editor, FILES, PANE, Rows, SYMBOLS } from './shared/index.js';
 
