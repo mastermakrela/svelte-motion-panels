@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # SvelteKit 3 needs Node >= 22.17 (vite / svelte-check run on node).
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - uses: oven-sh/setup-bun@v2
+
+      - run: bun install --frozen-lockfile
+
+      - run: bun run lint
+
+      - run: bun run check
+
+      - run: bun run test
+
+      - run: bun run build
