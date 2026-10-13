@@ -6,24 +6,21 @@
 	let active = $state(SECTIONS[0].id);
 
 	// The last section whose top has scrolled past the header is the current one.
+	// Sections are taller than the viewport, so an IntersectionObserver would only
+	// report when one is fully in or out, and the highlight would lag.
 	const track: Attachment = () => {
 		const targets = SECTIONS.map(({ id }) => document.getElementById(id)).filter(
 			(target) => target !== null
 		);
-		// Any crossing of the line re-reads which sections have passed it.
-		const observer = new IntersectionObserver(
-			() => {
-				active =
-					targets.findLast((target) => target.getBoundingClientRect().top <= 120)?.id ??
-					SECTIONS[0].id;
-			},
-			{ rootMargin: '-120px 0px 0px 0px', threshold: [0, 1] }
-		);
-		for (const target of targets) {
-			observer.observe(target);
-		}
+		const update = () => {
+			active =
+				targets.findLast((target) => target.getBoundingClientRect().top <= 120)?.id ??
+				SECTIONS[0].id;
+		};
+		update();
+		window.addEventListener('scroll', update, { passive: true });
 
-		return () => observer.disconnect();
+		return () => window.removeEventListener('scroll', update);
 	};
 </script>
 
