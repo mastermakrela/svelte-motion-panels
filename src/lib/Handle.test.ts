@@ -14,6 +14,7 @@ const press = (button: Element, key: string) => {
 
 afterEach(() => {
 	vi.restoreAllMocks();
+	Reflect.deleteProperty(HTMLElement.prototype, 'offsetParent');
 });
 
 describe('Handle', () => {
@@ -80,6 +81,46 @@ describe('Handle', () => {
 		window.dispatchEvent(new PointerEvent('pointerup', { clientX: 11, pointerId: 1 }));
 
 		expect(onOrderChange).not.toHaveBeenCalled();
+	});
+
+	test('a pointer drag swaps once the leading edge crosses the neighbour middle', () => {
+		// happy-dom has no layout: three 100px slots side by side in a 300px root.
+		const slot = (node: HTMLElement) => node.parentElement?.children;
+		vi.spyOn(HTMLElement.prototype, 'offsetLeft', 'get').mockImplementation(function (
+			this: HTMLElement
+		) {
+			return [...(slot(this) ?? [])].indexOf(this) * 100;
+		});
+		vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockImplementation(function (
+			this: HTMLElement
+		) {
+			return slot(this)?.length === 3 ? 100 : 300;
+		});
+		Object.defineProperty(HTMLElement.prototype, 'offsetParent', {
+			configurable: true,
+			get(this: HTMLElement) {
+				return this.parentElement;
+			}
+		});
+		const onOrderChange = vi.fn();
+		render(HandleFixture, { onOrderChange, order: ['files', 'outline'] });
+		const handle = screen.getByRole('button', { name: 'Move files' });
+		handle.dispatchEvent(
+			new PointerEvent('pointerdown', { bubbles: true, button: 0, clientX: 0, pointerId: 1 })
+		);
+		// Leading edge at 140: still short of the outline slot's middle (250), and the fill is never a target.
+		flushSync(() =>
+			window.dispatchEvent(new PointerEvent('pointermove', { clientX: 40, pointerId: 1 }))
+		);
+
+		expect(onOrderChange).not.toHaveBeenCalled();
+
+		flushSync(() =>
+			window.dispatchEvent(new PointerEvent('pointermove', { clientX: 150, pointerId: 1 }))
+		);
+
+		expect(onOrderChange).toHaveBeenCalledWith(['outline', 'files']);
+		window.dispatchEvent(new PointerEvent('pointerup', { clientX: 150, pointerId: 1 }));
 	});
 
 	test('a release after the group lost its order still gives pointer events back', async () => {
