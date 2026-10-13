@@ -87,7 +87,7 @@ export const setGrip = setGripContext;
 
 export const getGrip = () => (hasGripContext() ? getGripContext() : null);
 
-const px = (value: number | string) => (typeof value === 'number' ? `${value}px` : value);
+export const px = (value: number | string) => (typeof value === 'number' ? `${value}px` : value);
 
 /**
  * Writes a MotionValue straight into one inline style property and keeps it

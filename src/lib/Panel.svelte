@@ -52,8 +52,6 @@ the room (a group needs exactly one).
 	type SizedOnly = Omit<SizedPanelProps, keyof DivProps | 'children' | 'pin' | 'value'>;
 
 	export type PanelProps<S extends Size = number> = FillPanelProps | SizedPanelProps<S>;
-
-	const px = (value: number | string) => (typeof value === 'number' ? `${value}px` : value);
 </script>
 
 <script lang="ts" generics="S extends Size = number">
@@ -61,7 +59,7 @@ the room (a group needs exactly one).
 	import { coarsePointer, createPanel, edgeSize } from 'motion-panels';
 	import { onDestroy, untrack } from 'svelte';
 
-	import { bindStyle, getGroup, getReorder, liveStyle, store } from './internal.js';
+	import { bindStyle, getGroup, getReorder, liveStyle, px, store } from './internal.js';
 	import Separator from './Separator.svelte';
 	import Slot from './Slot.svelte';
 
